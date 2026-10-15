@@ -261,8 +261,8 @@ export function Hero() {
           </div>
 
           {/* Sample file card: builds itself for each destination */}
-          <div key={d.slug} className="glass absolute -bottom-2 -left-3 z-20 w-60 p-5 sm:-left-16 sm:w-64">
-            <p className="eyebrow">Sample file · {short[d.slug]}</p>
+         <div key={d.slug} className="hidden glass absolute -bottom-2 -left-3 z-20 w-60 p-5 sm:-left-16 sm:w-64">
+          <p className="eyebrow">Sample file · {short[d.slug]}</p>
             <ul className="mt-4 space-y-2.5">
               {items.map((t, i) => {
                 const done = i < items.length - 1;
