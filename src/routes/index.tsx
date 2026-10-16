@@ -6,7 +6,7 @@ import { FaqList } from "@/components/site/Faqs";
 import { EnquirySection } from "@/components/site/EnquirySection";
 import { Testimonials } from "@/components/site/Testimonials";
 import { DestinationMarquee, DestinationPanels, FileReadiness, ScrollTimeline, ServiceBento } from "@/components/site/Showcase";
-import { CountryGrid } from "@/components/site/CountryGrid"; import { destinations, pillars } from "@/lib/site";
+import { destinations, pillars } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -47,7 +47,7 @@ function Home() {
             </Reveal>
             <Reveal><Link to="/destinations" className="btn btn-ghost-light">View destinations</Link></Reveal>
           </div>
-          <DestinationPanels /><div className="mt-24"><CountryGrid /></div>
+          <DestinationPanels />
         </div>
       </section>
 
