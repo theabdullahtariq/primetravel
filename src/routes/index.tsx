@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import documents from "@/assets/documents.webp";
-import { FinalCTA, Reveal, SectionHead } from "@/components/site/Layout";
+import { Reveal, SectionHead } from "@/components/site/Layout";
 import { Hero } from "@/components/site/Hero";
 import { FaqList } from "@/components/site/Faqs";
+import { EnquirySection } from "@/components/site/EnquirySection";
+import { Testimonials } from "@/components/site/Testimonials";
 import { DestinationMarquee, DestinationPanels, FileReadiness, ScrollTimeline, ServiceBento } from "@/components/site/Showcase";
 import { destinations, pillars } from "@/lib/site";
 
@@ -89,6 +91,8 @@ function Home() {
         </div>
       </section>
 
+      <Testimonials />
+
       {/* FAQ */}
       <section className="py-28 md:py-36">
         <div className="container-x grid gap-16 lg:grid-cols-12">
@@ -100,7 +104,7 @@ function Home() {
         </div>
       </section>
 
-      <FinalCTA />
+      <EnquirySection />
     </>
   );
 }
