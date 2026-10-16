@@ -50,10 +50,12 @@ export const destinations = [
 ];
 
 export const steps = [
-  { title: "Submit Your Enquiry", text: "Send us your details through the form or WhatsApp." },
-  { title: "Discuss Your Requirements", text: "We talk through your destination, purpose and timeline." },
-  { title: "Receive Personalised Guidance", text: "You get clear advice and a checklist tailored to you." },
-  { title: "Prepare Your Documents & Next Steps", text: "We help you organise your file and plan what comes next." },
+  { title: "Contact Us", text: "Call us or chat with us on WhatsApp to discuss your visa requirements and desired destination.", tags: ["Call", "WhatsApp"] },
+  { title: "Initial Deposit", text: "Send your initial requirements and pay a £30 deposit. If we do not get an appointment date within 2 weeks, you get a 100% full refund.", tags: ["£30 deposit", "100% refund"] },
+  { title: "Document Prep", text: "We prepare and collect all required documents for your visa application in line with embassy standards.", tags: ["Embassy standards"] },
+  { title: "Submission", text: "Attend your appointment at the VFS, TLS, or Embassy on the scheduled date to submit your application.", tags: ["VFS", "TLS", "Embassy"] },
+  { title: "Processing", text: "Wait approximately 15 days from your appointment date for your visa application to be processed.", tags: ["~15 days"] },
+  { title: "Visa Collection", text: "Collect your passport from the visa center (upon SMS notification) or have it delivered via courier to your address.", tags: ["SMS notification", "Courier"] },
 ];
 
 export const pillars = [

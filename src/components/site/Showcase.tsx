@@ -140,6 +140,12 @@ export function DestinationPanels() {
 }
 
 /* 4 — Scroll-driven timeline */
+const facts = [
+  ["£30", "Initial deposit to begin"],
+  ["2 weeks", "To secure an appointment, or a 100% full refund"],
+  ["~15 days", "Processing, from your appointment date"],
+];
+
 export function ScrollTimeline() {
   const ref = useRef<HTMLOListElement>(null);
   const [p, setP] = useState(0);
@@ -159,21 +165,40 @@ export function ScrollTimeline() {
     return () => { window.removeEventListener("scroll", on); cancelAnimationFrame(raf); };
   }, []);
   return (
-    <ol ref={ref} className="relative mt-4 space-y-16 pl-14 md:pl-20">
-      <span className="absolute bottom-0 left-[1.15rem] top-0 w-px bg-border md:left-[1.65rem]" />
-      <span className="absolute left-[1.15rem] top-0 w-px bg-gold md:left-[1.65rem]" style={{ height: `${p * 100}%` }} />
-      {steps.map((s, i) => {
-        const done = p > (i + 0.35) / steps.length;
-        return (
-          <li key={s.title} className="relative">
-            <span className={`absolute -left-14 top-0 grid h-10 w-10 place-items-center rounded-full border font-serif text-lg transition-all duration-500 md:-left-20 md:h-14 md:w-14 md:text-2xl ${done ? "scale-105 border-gold bg-gold text-navy-deep" : "border-border bg-background text-muted-foreground"}`}
-              style={done ? { animation: "pulse-ring 1.6s ease-out 1" } : undefined}>{done ? <Check className="h-5 w-5" /> : i + 1}</span>
-            <h3 className={`text-3xl transition-opacity duration-500 md:text-4xl ${done ? "opacity-100" : "opacity-40"}`}>{s.title}</h3>
-            <p className={`mt-2 max-w-md text-muted-foreground transition-opacity duration-500 ${done ? "opacity-100" : "opacity-40"}`}>{s.text}</p>
-          </li>
-        );
-      })}
-    </ol>
+    <div>
+      <div className="grid gap-3 sm:grid-cols-3">
+        {facts.map(([n, l], i) => (
+          <Reveal key={n} delay={i * 90} className="border border-gold/40 bg-card p-5">
+            <p className="font-serif text-4xl text-gold">{n}</p>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{l}</p>
+          </Reveal>
+        ))}
+      </div>
+      <ol ref={ref} className="relative mt-14 space-y-5 pl-14 md:pl-20">
+        <span className="absolute bottom-0 left-[1.15rem] top-0 w-px bg-border md:left-[1.65rem]" />
+        <span className="absolute left-[1.15rem] top-0 w-px bg-gold md:left-[1.65rem]" style={{ height: `${p * 100}%` }} />
+        {steps.map((s, i) => {
+          const done = p > (i + 0.35) / steps.length;
+          const current = done && !(p > (i + 1.35) / steps.length);
+          return (
+            <li key={s.title} className="relative">
+              <span className={`absolute -left-14 top-5 grid h-10 w-10 place-items-center rounded-full border font-serif text-lg transition-all duration-500 md:-left-20 md:h-14 md:w-14 md:text-2xl ${done ? "scale-105 border-gold bg-gold text-navy-deep" : "border-border bg-background text-muted-foreground"}`}
+                style={current ? { animation: "pulse-ring 1.6s ease-out 1" } : undefined}>{done ? <Check className="h-5 w-5" /> : i + 1}</span>
+              <div className={`relative overflow-hidden border p-6 transition-all duration-500 md:p-7 ${current ? "border-gold bg-card shadow-[0_24px_50px_-28px_color-mix(in_oklab,var(--navy)_50%,transparent)]" : done ? "border-border bg-card" : "border-border/60 opacity-50"}`}>
+                <span aria-hidden="true" className="pointer-events-none absolute -right-1 -top-4 select-none font-serif text-8xl text-gold/10">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="relative text-2xl md:text-3xl">{s.title}</h3>
+                <p className="relative mt-2 max-w-md text-muted-foreground">{s.text}</p>
+                <ul className="relative mt-4 flex flex-wrap gap-2">
+                  {s.tags.map((t) => (
+                    <li key={t} className="border border-gold/40 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-wider text-navy/80">{t}</li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
   );
 }
 
