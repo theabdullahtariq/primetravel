@@ -141,9 +141,9 @@ export function DestinationPanels() {
 
 /* 4 — Scroll-driven timeline */
 const facts = [
-  ["£30", "Initial deposit to begin"],
-  ["2 weeks", "To secure an appointment, or a 100% full refund"],
-  ["~15 days", "Processing, from your appointment date"],
+  ["£30", "Initial deposit to begin", "bg-navy text-ivory", "text-gold-soft", "text-ivory/70"],
+  ["2 weeks", "To secure an appointment, or a 100% full refund", "bg-gold text-navy-deep", "text-navy-deep", "text-navy-deep/80"],
+  ["~15 days", "Processing, from your appointment date", "bg-[#2f4a43] text-ivory", "text-gold-soft", "text-ivory/75"],
 ];
 
 export function ScrollTimeline() {
@@ -167,10 +167,10 @@ export function ScrollTimeline() {
   return (
     <div>
       <div className="grid gap-3 sm:grid-cols-3">
-        {facts.map(([n, l], i) => (
-          <Reveal key={n} delay={i * 90} className="border border-gold/40 bg-card p-5">
-            <p className="font-serif text-4xl text-gold">{n}</p>
-            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{l}</p>
+        {facts.map(([n, l, box, num, sub], i) => (
+          <Reveal key={n} delay={i * 90} className={`p-5 ${box}`}>
+            <p className={`font-serif text-4xl ${num}`}>{n}</p>
+            <p className={`mt-1 text-xs leading-relaxed ${sub}`}>{l}</p>
           </Reveal>
         ))}
       </div>
