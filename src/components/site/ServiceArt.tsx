@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 const G = "var(--gold)";
 const I = "var(--ivory)";
@@ -76,6 +76,13 @@ const art: Record<string, ReactNode> = {
 };
 
 export function ServiceArt({ slug, className = "" }: { slug: string; className?: string }) {
+  // Uses /public/services/<slug>.webp when that photo exists, otherwise falls back to the illustration.
+  const [photo, setPhoto] = useState(false);
+  useEffect(() => {
+    const probe = new Image();
+    probe.onload = () => setPhoto(true);
+    probe.src = `/services/${slug}.webp`;
+  }, [slug]);
   return (
     <div className={`relative overflow-hidden bg-gradient-to-br from-navy to-navy-deep ${className}`}>
       <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(var(--ivory) .6px, transparent .7px)", backgroundSize: "18px 18px", maskImage: "radial-gradient(circle at 50% 50%, black, transparent 75%)" }} />
@@ -84,6 +91,12 @@ export function ServiceArt({ slug, className = "" }: { slug: string; className?:
         className="relative mx-auto h-full w-full max-w-[17rem] p-4 transition-transform duration-700 ease-out group-hover:-translate-y-1 group-hover:scale-110" aria-hidden="true">
         {art[slug]}
       </svg>
+      {photo && (
+        <>
+          <img src={`/services/${slug}.webp`} alt="" decoding="async" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/55 via-transparent to-navy-deep/35" />
+        </>
+      )}
     </div>
   );
 }
