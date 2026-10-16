@@ -1,7 +1,8 @@
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
 import { MessageCircle, Send, ShieldCheck, UserCheck } from "lucide-react";
-import { WHATSAPP_URL, destinations } from "@/lib/site";
+import { WHATSAPP_URL } from "@/lib/site";
+import { countryOptions } from "@/lib/countries";
 import { Reveal, WhatsAppIcon } from "@/components/site/Layout";
 
 const schema = z.object({
@@ -79,7 +80,7 @@ export function EnquirySection() {
               <label className={label}>Destination country
                 <select name="destination" defaultValue="" className={input}>
                   <option value="" disabled>Select country</option>
-                  {destinations.map((d) => <option key={d.slug} className="text-navy-deep">{d.name}</option>)}
+                  {countryOptions.map((n) => <option key={n} className="text-navy-deep">{n}</option>)}
                   <option className="text-navy-deep">Not sure yet</option>
                 </select><Err k="destination" />
               </label>

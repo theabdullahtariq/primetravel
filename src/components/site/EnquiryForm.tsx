@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { z } from "zod";
-import { WHATSAPP_URL, destinations, services } from "@/lib/site";
+import { WHATSAPP_URL, services } from "@/lib/site"; import { countryOptions } from "@/lib/countries";
 import { WhatsAppIcon } from "./Layout";
 
 const schema = z.object({
@@ -58,7 +58,7 @@ export function EnquiryForm() {
       <label className="block"><span className="eyebrow !text-muted-foreground">Destination *</span>
         <select name="destination" defaultValue="" className={field} aria-invalid={!!errors.destination}>
           <option value="" disabled>Select…</option>
-          {destinations.map((d) => <option key={d.slug}>{d.name}</option>)}
+          {countryOptions.map((n) => <option key={n}>{n}</option>)}
           <option>Not sure yet</option>
         </select><Err k="destination" /></label>
       <label className="block"><span className="eyebrow !text-muted-foreground">Service *</span>

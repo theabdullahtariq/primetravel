@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import schengen from "@/assets/schengen.webp";
 import { FinalCTA, PageHero, Reveal } from "@/components/site/Layout";
-import { destinations } from "@/lib/site";
+import { CountryGrid } from "@/components/site/CountryGrid"; import { destinations } from "@/lib/site";
 
 export const Route = createFileRoute("/destinations")({
   head: () => ({
@@ -38,7 +38,7 @@ function Destinations() {
           ))}
         </div>
       </section>
-      <FinalCTA />
+      <section className="bg-navy py-24 text-ivory md:py-32"><div className="container-x"><CountryGrid /></div></section><FinalCTA />
     </>
   );
 }
