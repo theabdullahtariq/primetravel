@@ -144,8 +144,8 @@ export function PageHero({ eyebrow, title, text, image }: { eyebrow: string; tit
       <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/40" />
       <div className="container-x relative">
         <p className="eyebrow animate-rise">{eyebrow}</p>
-        <h1 className="animate-rise mt-5 max-w-4xl text-5xl leading-[1.05] md:text-7xl" style={{ animationDelay: "120ms" }}>{title}</h1>
-        {text && <p className="animate-rise mt-6 max-w-2xl text-lg text-ivory/75" style={{ animationDelay: "240ms" }}>{text}</p>}
+        <h1 className="animate-rise mt-5 max-w-4xl text-5xl leading-[1.05] md:text-7xl" style={{ animationDelay: "40ms" }}>{title}</h1>
+        {text && <p className="animate-rise mt-6 max-w-2xl text-lg text-ivory/75" style={{ animationDelay: "80ms" }}>{text}</p>}
       </div>
     </section>
   );

@@ -155,7 +155,7 @@ export function Hero() {
       <div className="container-x relative z-10 grid items-center gap-24 pt-36 lg:grid-cols-12 lg:gap-12" style={{ paddingBottom: "calc(var(--flag-vis) + 3.5rem)" }}>
         {/* Copy */}
         <div className="lg:col-span-7">
-          <p className="eyebrow animate-rise" style={{ animationDelay: "200ms" }}>Visa & Travel Consultancy</p>
+          <p className="eyebrow animate-rise" style={{ animationDelay: "50ms" }}>Visa & Travel Consultancy</p>
           <h1 className="mt-6 text-5xl leading-[1.02] sm:text-6xl xl:text-7xl">
             {headline.map((w, i) => {
               const em = w.startsWith("*");
@@ -163,7 +163,7 @@ export function Hero() {
               return (
                 <span key={w}>
                   <span className="hero-word">
-                    <span style={{ animationDelay: `${350 + i * 90}ms` }}>{em ? <em className="text-gold-soft">{text}</em> : text}</span>
+                    <span style={{ animationDelay: `${80 + i * 50}ms` }}>{em ? <em className="text-gold-soft">{text}</em> : text}</span>
                   </span>{" "}
                 </span>
               );
@@ -175,7 +175,7 @@ export function Hero() {
             {d.blurb}
           </p>
 
-          <div className="animate-rise mt-10 flex flex-col gap-4 sm:flex-row sm:items-center" style={{ animationDelay: "900ms" }}>
+          <div className="animate-rise mt-10 flex flex-col gap-4 sm:flex-row sm:items-center" style={{ animationDelay: "450ms" }}>
             <Link to="/contact" className="btn btn-gold">Get a Free Assessment <ArrowRight className="h-4 w-4" /></Link>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost-light"><WhatsAppIcon className="h-4 w-4" /> Chat on WhatsApp</a>
           </div>
@@ -185,7 +185,7 @@ export function Hero() {
             role="tablist"
             aria-label="Choose a destination"
             className="animate-rise mt-14 grid max-w-xl grid-cols-5 gap-3 sm:gap-4"
-            style={{ animationDelay: "600ms" }}
+            style={{ animationDelay: "300ms" }}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
             onFocus={() => setPaused(true)}

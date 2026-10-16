@@ -4,13 +4,16 @@ import { Reveal } from "@/components/site/Layout";
 
 type Review = { name: string; meta: string; quote: string; rating?: number };
 
-/* ⚠ PLACEHOLDERS: replace each entry with a REAL review from a real client (with their permission).
-   Never publish invented testimonials; fake reviews are prohibited under UK consumer law.
-   Add or remove entries freely. With zero entries this section hides itself. */
+/* ⚠ SAMPLE REVIEWS: these are invented examples so the design can be seen in context.
+   Before launch, replace each entry with a REAL review from a real client (with their permission),
+   then set SAMPLE to false. Publishing invented reviews as genuine is prohibited under UK consumer law.
+   While SAMPLE is true, a small "sample reviews" note is shown to visitors. */
+const SAMPLE = true;
+
 const reviews: Review[] = [
-  { name: "Client name", meta: "Destination · Service", rating: 5, quote: "Placeholder: paste a genuine review here, ideally one that mentions the appointment booking or document preparation." },
-  { name: "Client name", meta: "Destination · Service", rating: 5, quote: "Placeholder: paste a second genuine review here, ideally about communication or how clear the process felt." },
-  { name: "Client name", meta: "Destination · Service", rating: 5, quote: "Placeholder: paste a third genuine review here, ideally about the overall experience." },
+  { name: "Aisha K.", meta: "Schengen · Appointment Assistance", rating: 5, quote: "The refund promise made starting easy. My appointment was secured quickly, and I knew exactly what to bring on the day." },
+  { name: "Daniel R.", meta: "Canada · Document Preparation", rating: 5, quote: "Every document was checked against the embassy list before submission. Having my cover letter and itinerary organised took the stress out." },
+  { name: "Sara M.", meta: "Turkey · Visa Application Assistance", rating: 5, quote: "Quick replies on WhatsApp and no confusing jargon. I always knew what the next step was and what was expected of me." },
 ];
 
 export function Testimonials() {
@@ -62,6 +65,7 @@ export function Testimonials() {
               </div>
             )}
           </figure>
+          {SAMPLE && <p className="mt-4 text-xs text-muted-foreground">Sample reviews shown for illustration.</p>}
         </Reveal>
       </div>
     </section>
