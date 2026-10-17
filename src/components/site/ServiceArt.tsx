@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 const G = "var(--gold)";
 const I = "var(--ivory)";
@@ -76,13 +76,14 @@ const art: Record<string, ReactNode> = {
 };
 
 export function ServiceArt({ slug, className = "" }: { slug: string; className?: string }) {
-  // Uses /public/services/<slug>.webp when that photo exists, otherwise falls back to the illustration.
-  const [photo, setPhoto] = useState(false);
+  // Photo from /public/services/<slug>.webp; if it is missing or fails, the illustration stays.
+  const ref = useRef<HTMLImageElement>(null);
+  const [loaded, setLoaded] = useState(false);
+  const [failed, setFailed] = useState(false);
   useEffect(() => {
-    const probe = new Image();
-    probe.onload = () => setPhoto(true);
-    probe.src = `/services/${slug}.webp`;
-  }, [slug]);
+    const el = ref.current;
+    if (el?.complete) { if (el.naturalWidth > 0) setLoaded(true); else setFailed(true); }
+  }, []);
   return (
     <div className={`relative overflow-hidden bg-gradient-to-br from-navy to-navy-deep ${className}`}>
       <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(var(--ivory) .6px, transparent .7px)", backgroundSize: "18px 18px", maskImage: "radial-gradient(circle at 50% 50%, black, transparent 75%)" }} />
@@ -91,10 +92,11 @@ export function ServiceArt({ slug, className = "" }: { slug: string; className?:
         className="relative mx-auto h-full w-full max-w-[17rem] p-4 transition-transform duration-700 ease-out group-hover:-translate-y-1 group-hover:scale-110" aria-hidden="true">
         {art[slug]}
       </svg>
-      {photo && (
+      {!failed && (
         <>
-          <img src={`/services/${slug}.webp`} alt="" decoding="async" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" />
-          <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/55 via-transparent to-navy-deep/35" />
+          <img ref={ref} src={`/services/${slug}.webp`} alt="" width={1000} height={560} loading="lazy" decoding="async" onLoad={() => setLoaded(true)} onError={() => setFailed(true)}
+            className={`absolute inset-0 h-full w-full object-cover transition-[opacity,transform] duration-700 group-hover:scale-105 ${loaded ? "opacity-100" : "opacity-0"}`} />
+          <div className={`absolute inset-0 bg-gradient-to-t from-navy-deep/55 via-transparent to-navy-deep/35 transition-opacity duration-700 ${loaded ? "opacity-100" : "opacity-0"}`} />
         </>
       )}
     </div>

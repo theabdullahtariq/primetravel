@@ -68,7 +68,7 @@ export const pillars = [
 
 export const faqs = [
   { q: "What does your visa assistance include?", a: "We guide you through requirements, help complete forms, prepare cover letters and review your supporting documents. The scope depends on the service you choose." },
-  { q: "Can you guarantee my visa will be approved?", a: "No. Visa decisions are made solely by the relevant authorities. Our role is to help you prepare a clear, complete and well-organised application." },
+  { q: "What happens if you can't secure an appointment for me?", a: "If we do not get an appointment date within 2 weeks of your initial deposit, you receive a 100% full refund of that deposit. Please see our Refund Policy for the full terms." },
   { q: "Which documents will I need?", a: "Requirements vary by destination and purpose of travel. After discussing your plans we provide a personalised checklist." },
   { q: "Can you book my visa appointment?", a: "We can guide and support you through official appointment systems. Appointment availability is controlled by the authorities and visa centres and cannot be guaranteed." },
   { q: "How long does processing take?", a: "Processing times are set by the relevant authority and can change. We share the published guidance where available, but cannot control or shorten official timelines." },
