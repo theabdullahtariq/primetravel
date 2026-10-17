@@ -20,7 +20,7 @@ const points = [
   { Icon: UserCheck, t: "A real person", s: "Personal guidance for your destination and purpose." },
 ];
 
-const input = "mt-2 w-full border border-ivory/15 bg-ivory/5 px-4 py-3.5 text-ivory outline-none transition-colors placeholder:text-ivory/35 focus:border-gold [color-scheme:dark]";
+const input = "mt-2 w-full text-base border border-ivory/15 bg-ivory/5 px-4 py-3.5 text-ivory outline-none transition-colors placeholder:text-ivory/35 focus:border-gold [color-scheme:dark]";
 const label = "block text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-ivory/60";
 
 export function EnquirySection() {

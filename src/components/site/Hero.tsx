@@ -71,7 +71,7 @@ export function Hero() {
   const half = Math.floor(n / 2);
   const prevOff = useRef<number[]>([]);
   const d = destinations[idx]!;
-  const items = checklists[d.slug] ?? checklists.schengen!;
+  const items = checklists[d.slug] ?? checklists["schengen"]!;
 
   useEffect(() => {
     prevOff.current = destinations.map((_, i) => ((i - idx + n + half) % n) - half);

@@ -20,7 +20,7 @@ const extra: Record<string, string> = {
 };
 
 function CountryFlag({ slug, className }: { slug: string; className?: string }) {
-  if (!extra[slug]) return <Flag slug={slug} className={className} />;
+  if (!extra[slug]) return <Flag slug={slug} className={className ?? ""} />;
   return <svg viewBox="0 0 60 40" preserveAspectRatio="xMidYMid slice" aria-hidden="true" className={className} dangerouslySetInnerHTML={{ __html: extra[slug] }} />;
 }
 
@@ -40,7 +40,7 @@ function Card({ c, i }: { c: Country; i: number }) {
   const href = `${WHATSAPP_URL}?text=${encodeURIComponent(`Hello Prime Travel LTD, I'd like a free assessment for ${c.name}.`)}`;
   return (
     <a href={href} target="_blank" rel="noopener noreferrer" style={{ animationDelay: `${i * 35}ms` }}
-      className="animate-rise group relative flex flex-col overflow-hidden border border-ivory/10 bg-navy-deep transition-all duration-500 hover:-translate-y-1 hover:border-gold">
+      className="animate-rise group relative flex w-[78%] shrink-0 snap-start flex-col overflow-hidden sm:w-auto sm:shrink border border-ivory/10 bg-navy-deep transition-all duration-500 hover:-translate-y-1 hover:border-gold">
       <div className="relative h-60 overflow-hidden bg-navy">
         <CountryFlag slug={c.slug} className="absolute inset-0 h-full w-full scale-150 opacity-30 blur-2xl" />
         {photo && <img src={photo} alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" />}
@@ -70,14 +70,14 @@ export function CountryGrid() {
           <p className="eyebrow">Every Country We Cover</p>
           <h3 className="mt-3 text-3xl text-ivory md:text-5xl">{countries.length} destinations, one clear process.</h3>
         </div>
-        <div className="flex gap-2" role="tablist">
+        <div className="flex flex-wrap gap-2" role="tablist">
           {tabs.map(([k, l, n]) => (
             <button key={k} type="button" role="tab" aria-selected={tab === k} onClick={() => setTab(k)}
-              className={`border px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] transition-colors ${tab === k ? "border-gold bg-gold text-navy-deep" : "border-ivory/20 text-ivory/70 hover:border-ivory/50"}`}>{l} <span className="opacity-60">{n}</span></button>
+              className={`border px-4 py-3 text-xs md:py-2 font-semibold uppercase tracking-[0.14em] transition-colors ${tab === k ? "border-gold bg-gold text-navy-deep" : "border-ivory/20 text-ivory/70 hover:border-ivory/50"}`}>{l} <span className="opacity-60">{n}</span></button>
           ))}
         </div>
       </div>
-      <div key={tab} className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div key={tab} className="-mx-6 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 [scrollbar-width:none] sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3 [&::-webkit-scrollbar]:hidden">
         {list.map((c, i) => <Card key={c.slug} c={c} i={i} />)}
       </div>
     </div>

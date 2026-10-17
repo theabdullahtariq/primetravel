@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, Phone } from "lucide-react";
 import { BRAND, DISCLAIMER, WHATSAPP_DISPLAY, WHATSAPP_URL, nav, services } from "@/lib/site";
 
 export function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
@@ -44,6 +44,10 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
     window.addEventListener("scroll", on, { passive: true });
     return () => window.removeEventListener("scroll", on);
   }, []);
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
   const light = overlay && !scrolled && !open;
   return (
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${light ? "bg-transparent" : "bg-ivory/95 backdrop-blur border-b border-border"}`}>
@@ -67,15 +71,18 @@ export function Header({ overlay = false }: { overlay?: boolean }) {
         </div>
       </div>
       {open && (
-        <div className="border-t border-border bg-ivory lg:hidden">
-          <nav className="container-x flex flex-col py-6" aria-label="Mobile">
+        <div className="absolute inset-x-0 top-full h-[calc(100svh-5rem)] overflow-y-auto border-t border-border bg-ivory lg:hidden">
+          <nav className="container-x flex min-h-full flex-col py-6" aria-label="Mobile">
             {nav.map((n) => (
-              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="border-b border-border py-4 font-serif text-2xl text-navy">
-                {n.label}
+              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="flex items-center justify-between border-b border-border py-5 font-serif text-3xl text-navy">
+                {n.label}<ArrowUpRight className="h-5 w-5 text-gold" />
               </Link>
             ))}
-            <Link to="/faqs" onClick={() => setOpen(false)} className="border-b border-border py-4 font-serif text-2xl text-navy">FAQs</Link>
-            <Link to="/contact" onClick={() => setOpen(false)} className="btn btn-gold mt-6">Get Started</Link>
+            <Link to="/faqs" onClick={() => setOpen(false)} className="flex items-center justify-between border-b border-border py-5 font-serif text-3xl text-navy">FAQs<ArrowUpRight className="h-5 w-5 text-gold" /></Link>
+            <div className="mt-auto space-y-3 pt-10">
+              <Link to="/contact" onClick={() => setOpen(false)} className="btn btn-gold w-full justify-center">Get Started</Link>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost-dark w-full justify-center"><WhatsAppIcon className="h-4 w-4" /> {WHATSAPP_DISPLAY}</a>
+            </div>
           </nav>
         </div>
       )}
@@ -131,9 +138,22 @@ export function Footer() {
 export function WhatsAppFab() {
   return (
     <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp"
-      className="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-whatsapp text-ivory shadow-lg transition-transform hover:scale-105">
+      className="fixed bottom-5 right-5 z-40 hidden h-14 w-14 place-items-center lg:grid rounded-full bg-whatsapp text-ivory shadow-lg transition-transform hover:scale-105">
       <WhatsAppIcon className="h-7 w-7" />
     </a>
+  );
+}
+
+export function MobileActionBar() {
+  const tel = `tel:+${WHATSAPP_URL.replace(/\D/g, "")}`;
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-ivory/15 bg-navy-deep/95 px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur lg:hidden">
+      <div className="mx-auto grid max-w-md grid-cols-[1fr_auto_1fr] gap-2">
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex h-12 items-center justify-center gap-2 bg-whatsapp text-sm font-semibold text-ivory"><WhatsAppIcon className="h-5 w-5" /> WhatsApp</a>
+        <a href={tel} aria-label="Call us" className="grid h-12 w-12 place-items-center border border-ivory/25 text-ivory"><Phone className="h-5 w-5" /></a>
+        <Link to="/contact" className="flex h-12 items-center justify-center bg-gold text-sm font-semibold text-navy-deep">Get Started</Link>
+      </div>
+    </div>
   );
 }
 

@@ -14,7 +14,7 @@ const schema = z.object({
 
 type Errors = Partial<Record<keyof z.infer<typeof schema>, string>>;
 
-const field = "w-full border-0 border-b border-input bg-transparent px-0 py-3 text-navy placeholder:text-muted-foreground/60 focus:border-gold focus:outline-none focus:ring-0";
+const field = "w-full text-base border-0 border-b border-input bg-transparent px-0 py-3 text-navy placeholder:text-muted-foreground/60 focus:border-gold focus:outline-none focus:ring-0";
 
 export function EnquiryForm() {
   const [errors, setErrors] = useState<Errors>({});

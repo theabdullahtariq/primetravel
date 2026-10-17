@@ -84,9 +84,9 @@ export function ServiceBento() {
     e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
   };
   return (
-    <div className="mt-16 grid gap-4 md:grid-cols-6">
+    <div className="-mx-6 mt-16 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-6 md:overflow-visible md:px-0 md:pb-0 [&::-webkit-scrollbar]:hidden">
       {services.map((s, i) => (
-        <Reveal key={s.slug} delay={(i % 3) * 80} className={spans[i]}>
+        <Reveal key={s.slug} delay={(i % 3) * 80} className={`${spans[i] ?? ""} w-[82%] shrink-0 snap-start md:w-auto md:shrink`}>
           <Link to="/services/$slug" params={{ slug: s.slug }} onMouseMove={move}
             className="spot group flex h-full flex-col overflow-hidden border border-border bg-card transition-all duration-500 hover:-translate-y-1 hover:border-gold hover:shadow-[0_30px_60px_-30px_color-mix(in_oklab,var(--navy)_45%,transparent)]">
             <div className="relative">
@@ -115,13 +115,13 @@ export function ServiceBento() {
 export function DestinationPanels() {
   const [a, setA] = useState(0);
   return (
-    <div className="mt-16 flex flex-col gap-3 md:h-[36rem] md:flex-row">
+    <div className="-mx-6 mt-16 flex snap-x snap-mandatory gap-3 overflow-x-auto px-6 [scrollbar-width:none] md:mx-0 md:h-[36rem] md:overflow-visible md:px-0 [&::-webkit-scrollbar]:hidden">
       {destinations.map((d, i) => {
         const on = a === i;
         return (
           <div key={d.slug} tabIndex={0} onMouseEnter={() => setA(i)} onFocus={() => setA(i)} onClick={() => setA(i)}
             style={vars({ "--g": on ? 5 : 1 })} aria-label={d.name}
-            className="panel group relative h-64 cursor-pointer overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-gold md:h-auto">
+            className="panel group relative h-80 w-[78%] shrink-0 cursor-pointer snap-start overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-gold md:h-auto md:w-auto md:shrink">
             <img src={d.image} alt={d.name} loading="eager" decoding="async" className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1.2s] ${on ? "scale-105 grayscale-0" : "scale-100 md:grayscale"}`} />
             <div className={`absolute inset-0 transition-opacity duration-700 ${on ? "bg-gradient-to-t from-navy-deep/90 via-navy-deep/10 to-transparent" : "bg-navy-deep/55"}`} />
             <span className="absolute left-5 top-5 font-serif text-lg text-gold-soft">{String(i + 1).padStart(2, "0")}</span>

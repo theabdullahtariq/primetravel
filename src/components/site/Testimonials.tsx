@@ -61,7 +61,7 @@ export function Testimonials() {
             </div>
             {reviews.length > 1 && (
               <div className="relative mt-10 flex gap-2">
-                {reviews.map((_, k) => <button key={k} type="button" aria-label={`Show review ${k + 1}`} onClick={() => setI(k)} className={`h-1 flex-1 transition-colors ${k === i ? "bg-gold" : "bg-border hover:bg-gold/40"}`} />)}
+                {reviews.map((_, k) => <button key={k} type="button" aria-label={`Show review ${k + 1}`} onClick={() => setI(k)} className="flex-1 py-3"><span className={`block h-1 transition-colors ${k === i ? "bg-gold" : "bg-border"}`} /></button>)}
               </div>
             )}
           </figure>

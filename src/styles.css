@@ -189,3 +189,10 @@
 .hero-word > span { display: inline-block; animation: word-up .6s cubic-bezier(.2,.7,.2,1) both; }
 @keyframes seal-spin { to { transform: rotate(360deg); } }
 @keyframes dash-flow { to { stroke-dashoffset: -140; } }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 1023px) { body { padding-bottom: 4.75rem; } }
+@media (max-width: 767px) {
+  .glass { backdrop-filter: none; background: color-mix(in oklab, var(--navy-deep) 88%, transparent); }
+  .blur-3xl { filter: blur(28px); }
+}

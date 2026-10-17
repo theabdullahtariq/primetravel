@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
-import { Header, Footer, WhatsAppFab } from "@/components/site/Layout";
+import { Header, Footer, WhatsAppFab, MobileActionBar } from "@/components/site/Layout";
 
 function NotFoundComponent() {
   return (
@@ -124,6 +124,7 @@ function RootComponent() {
       </main>
       <Footer />
       <WhatsAppFab />
+      <MobileActionBar />
     </QueryClientProvider>
   );
 }
