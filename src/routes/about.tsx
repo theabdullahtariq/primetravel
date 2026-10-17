@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import documents from "@/assets/documents.webp";
 import turkey from "@/assets/turkey.webp";
 import { FinalCTA, PageHero, Reveal, SectionHead } from "@/components/site/Layout";
-import { DISCLAIMER, pillars } from "@/lib/site";
+import { Founder } from "@/components/site/Founder"; import { DISCLAIMER, pillars } from "@/lib/site";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -36,7 +36,7 @@ function About() {
           </Reveal>
         </div>
       </section>
-      <section className="bg-card py-24 md:py-32">
+      <Founder /><section className="bg-card py-24 md:py-32">
         <div className="container-x">
           <SectionHead eyebrow="Our approach" title="What you can expect." />
           <div className="mt-14 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-5">
