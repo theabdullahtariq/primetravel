@@ -63,7 +63,7 @@ export function DestinationMarquee() {
           <div key={k} className="flex shrink-0 items-center">
             {items.map((t) => (
               <span key={t + k} className="flex items-center">
-                <span className="px-8 font-serif text-3xl font-semibold italic md:text-5xl">{t}</span>
+                <span className="px-8 font-serif text-3xl font-semibold md:text-5xl">{t}</span>
                 <span className="h-2.5 w-2.5 rotate-45 bg-navy-deep" />
               </span>
             ))}

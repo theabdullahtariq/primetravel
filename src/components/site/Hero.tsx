@@ -156,14 +156,14 @@ export function Hero() {
         {/* Copy */}
         <div className="lg:col-span-7">
           <p className="eyebrow animate-rise" style={{ animationDelay: "50ms" }}>Visa & Travel Consultancy</p>
-          <h1 className="mt-6 text-5xl leading-[1.02] sm:text-6xl xl:text-7xl">
+          <h1 className="mt-6 text-4xl leading-[1.1] sm:text-5xl xl:text-6xl">
             {headline.map((w, i) => {
               const em = w.startsWith("*");
               const text = em ? w.slice(1, -1) : w;
               return (
                 <span key={w}>
                   <span className="hero-word">
-                    <span style={{ animationDelay: `${80 + i * 50}ms` }}>{em ? <em className="text-gold-soft">{text}</em> : text}</span>
+                    <span style={{ animationDelay: `${80 + i * 50}ms` }}>{em ? <em className="text-gold-soft not-italic">{text}</em> : text}</span>
                   </span>{" "}
                 </span>
               );
