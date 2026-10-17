@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import documents from "@/assets/documents.webp";
 import { Reveal, SectionHead } from "@/components/site/Layout";
-import { Hero } from "@/components/site/Hero";
+import { Hero } from "@/components/site/Hero"; import { ReadinessChecker } from "@/components/site/ReadinessChecker";
 import { FaqList } from "@/components/site/Faqs";
 import { EnquirySection } from "@/components/site/EnquirySection";
 import { Testimonials } from "@/components/site/Testimonials";
@@ -65,7 +65,7 @@ function Home() {
       <section className="grain relative bg-navy-deep py-28 text-ivory md:py-36">
         <div className="container-x">
           <SectionHead eyebrow="Know Where You Stand" title="How ready is your file?" />
-          <FileReadiness />
+          <ReadinessChecker />
         </div>
       </section>
 
