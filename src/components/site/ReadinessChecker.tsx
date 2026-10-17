@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { BedDouble, BookOpen, Briefcase, Camera, Check, ClipboardList, Landmark, PenLine, Plane, ShieldCheck } from "lucide-react";
 import { WHATSAPP_URL } from "@/lib/site";
 import { WhatsAppIcon } from "@/components/site/Layout";
@@ -26,6 +26,15 @@ const R = 92, C = 2 * Math.PI * R, TICKS = 60;
 
 export function ReadinessChecker() {
   const [on, setOn] = useState<Set<string>>(new Set());
+  const ringRef = useRef<HTMLDivElement>(null);
+  const [ringOut, setRingOut] = useState(false);
+  useEffect(() => {
+    const el = ringRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => { if (e) setRingOut(!e.isIntersecting && e.boundingClientRect.top < 0); }, { rootMargin: "-80px 0px 0px 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
   const pct = on.size / all.length;
   const toggle = (id: string) => setOn((s) => { const n = new Set(s); if (n.has(id)) n.delete(id); else n.add(id); return n; });
   const status = pct === 0 ? "Starting" : pct < 0.5 ? "Getting there" : pct < 1 ? "Almost there" : "Ready for review";
@@ -40,9 +49,20 @@ export function ReadinessChecker() {
   return (
     <div className="relative mt-16">
       <div className="pointer-events-none absolute inset-0 -z-0 opacity-25" style={{ backgroundImage: "radial-gradient(var(--ivory) .6px, transparent .7px)", backgroundSize: "22px 22px", maskImage: "radial-gradient(ellipse at 30% 40%, black, transparent 70%)" }} />
+      {/* Phones: compact progress bar that follows you while you tick items */}
+      <div className="sticky top-20 z-30 h-0 lg:hidden">
+        <div className={`absolute -inset-x-6 top-0 flex items-center gap-4 border-b border-ivory/10 bg-navy-deep/95 px-6 py-3 backdrop-blur transition-all duration-300 md:-inset-x-10 md:px-10 ${ringOut ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0"}`}>
+          <span className="font-serif text-3xl leading-none text-gold-soft">{Math.round(pct * 100)}<span className="text-base">%</span></span>
+          <div className="min-w-0 flex-1">
+            <div className="h-1.5 overflow-hidden bg-ivory/10"><div className="h-full bg-gradient-to-r from-gold-soft to-gold transition-[width] duration-500" style={{ width: `${pct * 100}%` }} /></div>
+            <p className="mt-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-ivory/60">{status} · {on.size} of {all.length}</p>
+          </div>
+          <a href={href} target="_blank" rel="noopener noreferrer" aria-label="Send my checklist on WhatsApp" className="grid h-10 w-10 shrink-0 place-items-center bg-gold text-navy-deep"><WhatsAppIcon className="h-5 w-5" /></a>
+        </div>
+      </div>
       <div className="relative grid items-center gap-14 lg:grid-cols-12">
-        <div className="lg:col-span-5">
-          <div className="relative mx-auto aspect-square max-w-sm">
+        <div className="-mb-4 lg:col-span-5 lg:mb-0">
+          <div ref={ringRef} className="relative mx-auto aspect-square max-w-[17rem] sm:max-w-sm">
             <div className="absolute inset-6 rounded-full bg-gold blur-3xl transition-opacity duration-700" style={{ opacity: 0.08 + pct * 0.3 }} />
             <svg viewBox="0 0 240 240" className="relative h-full w-full" aria-hidden="true">
               <defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style={{ stopColor: "var(--gold-soft)" }} /><stop offset="1" style={{ stopColor: "var(--gold)" }} /></linearGradient>
