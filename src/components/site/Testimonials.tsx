@@ -12,8 +12,8 @@ const SAMPLE = true;
 
 const reviews: Review[] = [
   { name: "Aisha K.", meta: "Schengen · Appointment Assistance", rating: 5, quote: "The refund promise made starting easy. My appointment was secured quickly, and I knew exactly what to bring on the day." },
-  { name: "Daniel R.", meta: "Canada · Document Preparation", rating: 5, quote: "Every document was checked against the embassy list before submission. Having my cover letter and itinerary organised took the stress out." },
-  { name: "Sara M.", meta: "Turkey · Visa Application Assistance", rating: 5, quote: "Quick replies on WhatsApp and no confusing jargon. I always knew what the next step was and what was expected of me." },
+  { name: "Daniel R.", meta: "Germany · Document Preparation", rating: 5, quote: "Every document was checked against the embassy list before submission. Having my cover letter and itinerary organised took the stress out." },
+  { name: "Sara M.", meta: "France · Visa Application Assistance", rating: 5, quote: "Quick replies on WhatsApp and no confusing jargon. I always knew what the next step was and what was expected of me." },
 ];
 
 export function Testimonials() {

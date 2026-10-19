@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import canada from "@/assets/canada.webp";
+const pageImage = "/destinations/switzerland.webp";
 import { PageHero, Reveal, WhatsAppIcon } from "@/components/site/Layout";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 import { DISCLAIMER, WHATSAPP_DISPLAY, WHATSAPP_URL } from "@/lib/site";
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   return (
     <>
-      <PageHero eyebrow="Contact" title="Get a free assessment." text="Share a few details and our team will guide you on the next steps." image={canada} />
+      <PageHero eyebrow="Contact" title="Get a free assessment." text="Share a few details and our team will guide you on the next steps." image={pageImage} />
       <section className="py-24 md:py-32">
         <div className="container-x grid gap-16 lg:grid-cols-12">
           <Reveal className="lg:col-span-4">

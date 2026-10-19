@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, type CSSProperties, type MouseEvent } from
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
 import { WhatsAppIcon } from "@/components/site/Layout";
 import { Flag } from "@/components/site/Flags";
-import { WHATSAPP_URL, destinations } from "@/lib/site";
+import { WHATSAPP_URL, heroDestinations as destinations } from "@/lib/site";
 
 const AUTOPLAY_MS = 2500;
 
@@ -14,15 +14,11 @@ const ROW = [
   { x: 1.5, scale: 0.4, opacity: 0.28, sat: 0.65 },
 ] as const;
 
-const short: Record<string, string> = { schengen: "Schengen", usa: "USA", canada: "Canada", turkey: "Turkey", morocco: "Morocco" };
+const short: Record<string, string> = { schengen: "Schengen" };
 
 // Last item in each list shows as "in progress" (pulsing ring); the rest as done.
 const checklists: Record<string, string[]> = {
   schengen: ["Passport & photos", "Application form", "Cover letter", "Appointment guidance"],
-  usa: ["Passport & photo", "Form guidance", "Financial documents", "Interview preparation"],
-  canada: ["Passport & photos", "Purpose-of-travel letter", "Financial documents", "Biometrics guidance"],
-  turkey: ["Passport validity check", "Flight & hotel itinerary", "Travel insurance", "Online application guidance"],
-  morocco: ["Passport & photos", "Entry requirements check", "Accommodation booking", "Itinerary review"],
 };
 
 const headline = ["Your", "Visa", "Journey,", "*Fast-Tracked*", "With", "Expert", "Guidance."];
@@ -57,7 +53,7 @@ function HeroBackdrop() {
       }}
     >
       <Stamp label="UNITED KINGDOM • VISA GUIDANCE • " code="UK" className="absolute right-[8%] top-[14%] w-28 rotate-[14deg] opacity-[.16] sm:w-36 lg:left-[44%] lg:right-auto lg:top-[9%] lg:-rotate-[12deg] lg:opacity-[.14]" />
-      <Stamp label="UNITED STATES • VISA GUIDANCE • " code="USA" className="absolute bottom-[26%] right-[3%] hidden w-44 rotate-[10deg] opacity-[.12] lg:block" />
+      <Stamp label="SCHENGEN AREA • VISA GUIDANCE • " code="EU" className="absolute bottom-[26%] right-[3%] hidden w-44 rotate-[10deg] opacity-[.12] lg:block" />
     </div>
   );
 }

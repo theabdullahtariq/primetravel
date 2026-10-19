@@ -1,8 +1,4 @@
-import schengen from "@/assets/schengen.webp";
-import usa from "@/assets/usa.webp";
-import canada from "@/assets/canada.webp";
-import turkey from "@/assets/turkey.webp";
-import morocco from "@/assets/morocco.webp";
+import { countries } from "@/lib/countries";
 
 export const BRAND = "Prime Travel LTD";
 export const WHATSAPP_URL = "https://wa.me/923443151578";
@@ -41,13 +37,19 @@ export const services: Service[] = [
   { slug: "document-legalisation-apostille", icon: "Stamp", title: "Document Legalisation & Apostille Assistance", short: "Guidance through legalisation and apostille processes.", intro: "We guide you through the steps required to legalise or apostille documents for use abroad, so you know what is needed and in what order.", includes: ["Identification of required process", "Step-by-step guidance", "Document preparation support", "Coordination advice"] },
 ];
 
-export const destinations = [
-  { slug: "schengen", name: "Schengen Area", region: "Europe", image: schengen, blurb: "France, Italy, Spain, Germany, the Netherlands and more Schengen states — one visa type, many destinations." },
-  { slug: "usa", name: "United States", region: "North America", image: usa, blurb: "Guidance for visitor and business visa applications, forms and interview preparation." },
-  { slug: "canada", name: "Canada", region: "North America", image: canada, blurb: "Support preparing visitor visa applications and supporting documents." },
-  { slug: "turkey", name: "Turkey", region: "Europe & Asia", image: turkey, blurb: "Help with Turkish visa applications and travel arrangements." },
-  { slug: "morocco", name: "Morocco", region: "North Africa", image: morocco, blurb: "Guidance on Moroccan visa requirements and travel planning." },
-];
+export const destinations = countries.map((c) => ({
+  slug: c.slug,
+  name: c.name,
+  region: "Schengen Area",
+  image: `/destinations/${c.slug}.webp`,
+  blurb: c.blurb,
+}));
+
+/* The five countries featured in the home page hero (portrait photos in /public/hero). */
+export const heroDestinations = ["france", "switzerland", "greece", "germany", "portugal"].map((slug) => {
+  const c = countries.find((x) => x.slug === slug)!;
+  return { slug: c.slug, name: c.name, region: "Schengen Area", image: `/hero/${c.slug}.webp`, blurb: c.blurb };
+});
 
 export const steps = [
   { title: "Contact Us", text: "Call us or chat with us on WhatsApp to discuss your visa requirements and desired destination.", tags: ["Call", "WhatsApp"] },

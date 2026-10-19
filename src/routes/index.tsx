@@ -6,7 +6,7 @@ import { FaqList } from "@/components/site/Faqs";
 import { EnquirySection } from "@/components/site/EnquirySection";
 import { Testimonials } from "@/components/site/Testimonials";
 import { DestinationMarquee, DestinationPanels, FileReadiness, ScrollTimeline, ServiceBento } from "@/components/site/Showcase";
-import { destinations, pillars } from "@/lib/site";
+import { heroDestinations, pillars } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,7 +16,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Prime Travel LTD — Visa Guidance, Fast-Tracked" },
       { property: "og:description", content: "Expert visa guidance and travel arrangements from an independent consultancy." },
     ],
-    links: destinations.slice(0, 3).map((d) => ({ rel: "preload", as: "image", href: d.image, type: "image/webp" })),
+    links: heroDestinations.slice(0, 2).map((d) => ({ rel: "preload", as: "image", href: d.image, type: "image/webp" })),
   }),
   component: Home,
 });

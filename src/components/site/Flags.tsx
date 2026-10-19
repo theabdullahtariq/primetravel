@@ -1,4 +1,5 @@
 import { flagMarkup } from "@/components/site/flag-markup";
+import { extraFlags } from "@/components/site/flag-extra";
 
 export function Flag({ slug, className = "" }: { slug: string; className?: string }) {
   return (
@@ -7,7 +8,7 @@ export function Flag({ slug, className = "" }: { slug: string; className?: strin
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
       className={className}
-      dangerouslySetInnerHTML={{ __html: flagMarkup[slug] ?? "" }}
+      dangerouslySetInnerHTML={{ __html: extraFlags[slug] ?? flagMarkup[slug] ?? "" }}
     />
   );
 }

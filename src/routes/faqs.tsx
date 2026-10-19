@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import morocco from "@/assets/morocco.webp";
+const pageImage = "/destinations/austria.webp";
 import { FinalCTA, PageHero } from "@/components/site/Layout";
 import { FaqList } from "@/components/site/Faqs";
 
@@ -14,7 +14,7 @@ export const Route = createFileRoute("/faqs")({
   }),
   component: () => (
     <>
-      <PageHero eyebrow="FAQs" title="Frequently asked questions." text="Visa decisions and processing times are determined by the relevant authorities." image={morocco} />
+      <PageHero eyebrow="FAQs" title="Frequently asked questions." text="Visa decisions and processing times are determined by the relevant authorities." image={pageImage} />
       <section className="py-24 md:py-32"><div className="container-x max-w-4xl"><FaqList /></div></section>
       <FinalCTA />
     </>

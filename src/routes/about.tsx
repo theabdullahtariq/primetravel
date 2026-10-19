@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import documents from "@/assets/documents.webp";
-import turkey from "@/assets/turkey.webp";
+const pageImage = "/destinations/germany.webp";
 import { FinalCTA, PageHero, Reveal, SectionHead } from "@/components/site/Layout";
 import { Founder } from "@/components/site/Founder"; import { DISCLAIMER, pillars } from "@/lib/site";
 
@@ -19,7 +19,7 @@ export const Route = createFileRoute("/about")({
 function About() {
   return (
     <>
-      <PageHero eyebrow="About Us" title="Thoughtful guidance for every journey." image={turkey} />
+      <PageHero eyebrow="About Us" title="Thoughtful guidance for every journey." image={pageImage} />
       <section className="py-24 md:py-32">
         <div className="container-x grid items-center gap-16 lg:grid-cols-2">
           <Reveal>
