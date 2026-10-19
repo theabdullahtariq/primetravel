@@ -60,11 +60,12 @@ const art: Record<string, ReactNode> = {
     <path d="M120 20l46 17v32c0 28-19 44-46 54-27-10-46-26-46-54V37z" fill={I} fillOpacity=".08" />
     <path d="M100 72l14 14 26-30" stroke={G} strokeWidth="3" />
   </>),
-  "business-visa-assistance": (<>
-    <rect x="62" y="48" width="116" height="72" rx="6" fill={I} fillOpacity=".08" />
-    <path d="M94 48V38a6 6 0 0 1 6-6h40a6 6 0 0 1 6 6v10M62 80h116" />
-    <rect x="110" y="74" width="20" height="14" rx="2" fill={G} stroke="none" />
-    <path d="M78 108l14-10 12 6 18-14" stroke={G} opacity=".8" />
+  "schengen-visa-assistance": (<>
+    <circle cx="120" cy="70" r="48" fill={I} fillOpacity=".08" />
+    <ellipse cx="120" cy="70" rx="20" ry="48" />
+    <path d="M72 70h96M80 46h80M80 94h80" />
+    <circle cx="154" cy="40" r="9" fill={G} stroke="none" />
+    <path d="M150 40l3 3 6-7" stroke="var(--navy)" strokeWidth="2" />
   </>),
   "document-legalisation-apostille": (<>
     <circle cx="120" cy="30" r="12" fill={I} fillOpacity=".08" />
