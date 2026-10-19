@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Menu, X, ArrowUpRight, Phone } from "lucide-react";
 import { BRAND, DISCLAIMER, WHATSAPP_DISPLAY, WHATSAPP_URL, nav, services } from "@/lib/site";
+import logoMark from "@/assets/logo-mark.webp";
+import logoFull from "@/assets/logo-full.webp";
 
 export function WhatsAppIcon({ className = "h-5 w-5" }: { className?: string }) {
   return (
@@ -28,9 +30,12 @@ export function Reveal({ children, className = "", delay = 0 }: { children: Reac
 
 function Wordmark({ light }: { light?: boolean }) {
   return (
-    <Link to="/" className="flex items-baseline gap-2" aria-label={`${BRAND} home`}>
-      <span className={`font-serif text-2xl tracking-tight ${light ? "text-ivory" : "text-navy"}`}>Prime Travel</span>
-      <span className="eyebrow !text-[0.6rem]">LTD</span>
+    <Link to="/" className="flex items-center gap-3" aria-label={`${BRAND} home`}>
+      <img src={logoMark} alt="" width={48} height={48} className="h-11 w-11 rounded-md ring-1 ring-gold/40" />
+      <span className="flex items-baseline gap-2">
+        <span className={`font-serif text-2xl tracking-tight ${light ? "text-ivory" : "text-navy"}`}>Prime Travel</span>
+        <span className="eyebrow !text-[0.6rem]">LTD</span>
+      </span>
     </Link>
   );
 }
@@ -95,7 +100,9 @@ export function Footer() {
     <footer className="bg-navy-deep text-ivory/70">
       <div className="container-x grid gap-12 py-20 md:grid-cols-12">
         <div className="md:col-span-4">
-          <Wordmark light />
+          <Link to="/" aria-label={`${BRAND} home`} className="inline-block">
+            <img src={logoFull} alt={`${BRAND} — Beyond journeys, beyond expectations`} width={900} height={678} loading="lazy" className="w-52 max-w-full" />
+          </Link>
           <p className="mt-6 max-w-sm text-sm leading-relaxed">Professional visa guidance and travel arrangements, delivered with care and clarity.</p>
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-ghost-light mt-8 !py-3">
             <WhatsAppIcon className="h-4 w-4" /> {WHATSAPP_DISPLAY}
