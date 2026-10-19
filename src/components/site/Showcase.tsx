@@ -5,6 +5,7 @@ import { Reveal } from "@/components/site/Layout";
 import { ServiceArt } from "@/components/site/ServiceArt";
 import { ServiceIcon } from "@/components/site/ServiceIcon";
 import { destinations, services, steps } from "@/lib/site";
+import { allSchengen } from "@/lib/countries";
 
 const vars = (v: Record<string, string | number>) => v as CSSProperties;
 
@@ -35,7 +36,7 @@ function CountUp({ to }: { to: number }) {
 export function StatsStrip() {
   const stats = [
     { n: services.length, l: "Specialist services", s: "from first question to file" },
-    { n: destinations.length, l: "Destination regions", s: "Schengen to Morocco" },
+    { n: allSchengen.length, l: "Schengen countries", s: "every member of the area" },
     { n: steps.length, l: "Clear steps", s: "enquiry to next steps" },
     { n: 0, l: "Approvals promised", s: "only honest guidance" },
   ];

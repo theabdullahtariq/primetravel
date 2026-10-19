@@ -6,13 +6,13 @@ import { FaqList } from "@/components/site/Faqs";
 import { EnquirySection } from "@/components/site/EnquirySection";
 import { Testimonials } from "@/components/site/Testimonials";
 import { DestinationMarquee, DestinationPanels, FileReadiness, ScrollTimeline, ServiceBento } from "@/components/site/Showcase";
-import { CountryGrid } from "@/components/site/CountryGrid"; import { destinations, pillars } from "@/lib/site";
+import { destinations, pillars } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Prime Travel LTD — Visa Guidance, Fast-Tracked" },
-      { name: "description", content: "Professional visa guidance, organised documentation and dedicated support for Schengen, USA, Canada, Turkey and Morocco." },
+      { name: "description", content: "Professional visa guidance, organised documentation and dedicated appointment support for all 29 Schengen countries." },
       { property: "og:title", content: "Prime Travel LTD — Visa Guidance, Fast-Tracked" },
       { property: "og:description", content: "Expert visa guidance and travel arrangements from an independent consultancy." },
     ],
@@ -43,11 +43,12 @@ function Home() {
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <Reveal className="max-w-2xl">
               <p className="eyebrow">Destinations</p>
-              <h2 className="mt-4 text-4xl md:text-6xl">Where we can help you go.</h2>
+              <h2 className="mt-4 text-4xl md:text-6xl">Every Schengen country, covered.</h2>
             </Reveal>
             <Reveal><Link to="/destinations" className="btn btn-ghost-light">View destinations</Link></Reveal>
           </div>
-          <DestinationPanels /><div className="mt-24"><CountryGrid /></div>
+          <DestinationPanels />
+          <div className="mt-10 text-center"><Link to="/destinations" className="btn btn-ghost-light">See all 29 Schengen countries</Link></div>
         </div>
       </section>
 

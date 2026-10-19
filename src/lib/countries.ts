@@ -1,25 +1,26 @@
-import usa from "@/assets/usa.webp";
-import canada from "@/assets/canada.webp";
-import turkey from "@/assets/turkey.webp";
-import morocco from "@/assets/morocco.webp";
+export type Country = { slug: string; name: string; blurb: string };
 
-export type Country = { slug: string; name: string; blurb: string; group: "schengen" | "world"; photo?: string };
-
-/* Photos: drop /public/destinations/<slug>.webp for any country without one; it appears automatically. */
+/* Photos live in /public/destinations/<slug>.webp */
 export const countries: Country[] = [
-  { slug: "france", name: "France", group: "schengen", blurb: "Professional assistance for France visa appointments from the UK." },
-  { slug: "italy", name: "Italy", group: "schengen", blurb: "Expert Italy visa appointment monitoring and support." },
-  { slug: "germany", name: "Germany", group: "schengen", blurb: "Germany visa assistance with meticulous documentation." },
-  { slug: "netherlands", name: "Netherlands", group: "schengen", blurb: "Netherlands visa slot booking and application support." },
-  { slug: "switzerland", name: "Switzerland", group: "schengen", blurb: "Swiss visa application guidance and premium support." },
-  { slug: "greece", name: "Greece", group: "schengen", blurb: "Reliable Greece Schengen visa appointment assistance." },
-  { slug: "usa", name: "United States", group: "world", photo: usa, blurb: "B1/B2 visa consultation and renewal assistance." },
-  { slug: "canada", name: "Canada", group: "world", photo: canada, blurb: "Professional guidance for Canadian visitor visas." },
-  { slug: "turkey", name: "Turkey", group: "world", photo: turkey, blurb: "E-visa and traditional Turkey visa consultation." },
-  { slug: "morocco", name: "Morocco", group: "world", photo: morocco, blurb: "Specialised support for Morocco travel visa processing." },
-  { slug: "austria", name: "Austria", group: "schengen", blurb: "Austria visa expertise and appointment monitoring." },
-  { slug: "portugal", name: "Portugal", group: "schengen", blurb: "Portugal visa assistance for travel and residence." },
-  { slug: "sweden", name: "Sweden", group: "schengen", blurb: "Sweden visa processing support and consultation." },
+  { slug: "france", name: "France", blurb: "Professional assistance for France visa appointments from the UK." },
+  { slug: "italy", name: "Italy", blurb: "Expert Italy visa appointment monitoring and support." },
+  { slug: "germany", name: "Germany", blurb: "Germany visa assistance with meticulous documentation." },
+  { slug: "netherlands", name: "Netherlands", blurb: "Netherlands visa slot booking and application support." },
+  { slug: "switzerland", name: "Switzerland", blurb: "Swiss visa application guidance and premium support." },
+  { slug: "greece", name: "Greece", blurb: "Reliable Greece Schengen visa appointment assistance." },
+  { slug: "austria", name: "Austria", blurb: "Austria visa expertise and appointment monitoring." },
+  { slug: "portugal", name: "Portugal", blurb: "Portugal visa assistance for travel and residence." },
+  { slug: "sweden", name: "Sweden", blurb: "Sweden visa processing support and consultation." },
 ];
 
-export const countryOptions = countries.map((c) => c.name);
+/* Every member of the Schengen Area (29, as of 2026), alphabetical. */
+export const allSchengen: { slug: string; name: string }[] = [
+  ["austria", "Austria"], ["belgium", "Belgium"], ["bulgaria", "Bulgaria"], ["croatia", "Croatia"], ["czechia", "Czechia"],
+  ["denmark", "Denmark"], ["estonia", "Estonia"], ["finland", "Finland"], ["france", "France"], ["germany", "Germany"],
+  ["greece", "Greece"], ["hungary", "Hungary"], ["iceland", "Iceland"], ["italy", "Italy"], ["latvia", "Latvia"],
+  ["liechtenstein", "Liechtenstein"], ["lithuania", "Lithuania"], ["luxembourg", "Luxembourg"], ["malta", "Malta"],
+  ["netherlands", "Netherlands"], ["norway", "Norway"], ["poland", "Poland"], ["portugal", "Portugal"], ["romania", "Romania"],
+  ["slovakia", "Slovakia"], ["slovenia", "Slovenia"], ["spain", "Spain"], ["sweden", "Sweden"], ["switzerland", "Switzerland"],
+].map(([slug, name]) => ({ slug: slug!, name: name! }));
+
+export const countryOptions = allSchengen.map((c) => c.name);
